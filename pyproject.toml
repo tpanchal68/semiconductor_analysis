@@ -1,0 +1,36 @@
+[tool.black]
+line-length = 120
+target-version = ['py311']
+include = '\.pyi?$'
+
+[tool.pylint.'MESSAGES CONTROL']
+# Disable rules that conflict with Black or are redundant
+disable = [
+    "C0114", # Missing module docstring
+    "C0116", # Missing function docstring
+]
+
+[tool.pylint.variables]
+additional-builtins = ["warnings"]
+
+[tool.pylint.format]
+max-line-length = "120"
+
+[tool.flake8]
+# Note: Requires 'flake8-pyproject' plugin to work in this file
+max-line-length = 120
+extend-ignore = "E203" # E203 is incompatible with Black's whitespace handling
+exclude = [".git", "__pycache__", "build", "dist", ".venv"]
+
+[tool.pytest.ini_options]
+# Configuration for pytest
+minversion = "6.0"
+addopts = [
+    "-ra",           # Show extra test summary info
+    "-q",            # Quiet output
+    "--tb=short",    # Shorter tracebacks
+]
+testpaths = [
+    "tests",         # Tell pytest to look in a folder named 'tests'
+]
+pythonpath = ["."]   # Helps pytest find your local source code

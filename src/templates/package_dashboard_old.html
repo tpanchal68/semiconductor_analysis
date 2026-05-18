@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Packaged Process & Final Test Analytics Dashboard</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 2rem; background: #f8f9fa; }
+        .stats-container { display: flex; gap: 1.5rem; margin-bottom: 2rem; }
+        .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); flex: 1; }
+        .card h3 { margin: 0 0 0.5rem 0; color: #6c757d; font-size: 0.9rem; text-transform: uppercase; }
+        .card .metric { font-size: 2rem; font-weight: bold; color: #212529; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2rem; }
+        .plot-box { background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); text-align: center; }
+        .plot-box img { max-width: 100%; height: auto; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <h1>Packaged Silicon & Final Test Dashboard</h1>
+
+    <div class="stats-container">
+        <div class="card">
+            <h3>BIST Pass Yield</h3>
+            <div class="metric">{{ stats.yield }}%</div>
+        </div>
+        <div class="card">
+            <h3>Thermal/Power Escape Rate</h3>
+            <div class="metric" style="color: {{ 'red' if stats.escape_rate > 5 else '#212529' }}">{{ stats.escape_rate }}%</div>
+        </div>
+        <div class="card">
+            <h3>Average Unit Power</h3>
+            <div class="metric">{{ stats.avg_power_w }} W</div>
+        </div>
+        <div class="card">
+            <h3>Total Packaged Units</h3>
+            <div class="metric">{{ stats.total_packaged_units }}</div>
+        </div>
+    </div>
+
+    <h2>Advanced Component Metrology</h2>
+    <div class="grid">
+        <div class="plot-box">
+            <h3>Environmental Space Outliers</h3>
+            <img src="data:image/png;base64,{{ env_plot }}" alt="Isolation Forest Environmental Anomalies">
+        </div>
+
+        <div class="plot-box">
+            <h3>SerDes High-Dimensional Signal Integrity</h3>
+            <img src="data:image/png;base64,{{ serdes_plot }}" alt="Autoencoder Signal Integrity Reconstruction Error">
+        </div>
+
+        <div class="plot-box">
+            <h3>Process Corner Classification</h3>
+            <img src="data:image/png;base64,{{ corner_plot }}" alt="K-Means Split on SS, TT, FF Corners">
+        </div>
+
+        <div class="plot-box">
+            <h3>Soft Error Rate Reliability Forecast</h3>
+            <img src="data:image/png;base64,{{ reliability_plot }}" alt="Poisson Regression ECC Rate Validation">
+        </div>
+    </div>
+
+</body>
+</html>

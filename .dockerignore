@@ -1,0 +1,11 @@
+/.venv/
+/catboost_info/
+/instance/
+__pycache__/
+.pytest_cache/
+.run/
+*.log
+*.env
+/.idea/
+.gitignore
+.git

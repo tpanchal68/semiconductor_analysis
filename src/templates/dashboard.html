@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wafer Sort Analytics & Yield Dashboard</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 2rem; background: #f8f9fa; }
+        .stats-container { display: flex; gap: 1.5rem; margin-bottom: 2rem; }
+        .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); flex: 1; }
+        .card h3 { margin: 0 0 0.5rem 0; color: #6c757d; font-size: 0.9rem; text-transform: uppercase; }
+        .card .metric { font-size: 2rem; font-weight: bold; color: #212529; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2rem; }
+        .plot-box { background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); text-align: center; }
+        .plot-box img { max-width: 100%; height: auto; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <h1>Wafer Sort Summary Dashboard</h1>
+
+    <div class="stats-container">
+        <div class="card">
+            <h3>Functional Yield Percentage</h3>
+            <div class="metric">{{ stats.yield }}%</div>
+        </div>
+        <div class="card">
+            <h3>Average V_Min Parameter</h3>
+            <div class="metric">{{ stats.avg_v_min }} V</div>
+        </div>
+        <div class="card">
+            <h3>Total Inspected Die Matrix</h3>
+            <div class="metric">{{ stats.total_die }}</div>
+        </div>
+    </div>
+
+    <h2>Advanced Metrology Plots</h2>
+    <div class="grid">
+        <div class="plot-box">
+            <h3>Yield Performance Trends</h3>
+            <img src="data:image/png;base64,{{ yield_plot }}" alt="Yield Plot By Lot Target">
+        </div>
+
+        <div class="plot-box">
+            <h3>Parametric Distribution</h3>
+            <img src="data:image/png;base64,{{ vmin_plot }}" alt="V_Min/Iddq Parametric Density">
+        </div>
+
+        <div class="plot-box">
+            <h3>DBSCAN Spatial Discrepancies</h3>
+            <img src="data:image/png;base64,{{ spatial_clusters }}" alt="DBSCAN Defect Patterns Map">
+        </div>
+
+        <div class="plot-box">
+            <h3>Virtual Metrology Predictions</h3>
+            <img src="data:image/png;base64,{{ virtual_metrology }}" alt="Random Forest Inference Yield Probabilities">
+        </div>
+
+        <div class="plot-box" style="grid-column: span 2;">
+            <h3>Random Forest Parametric Weights</h3>
+            <img src="data:image/png;base64,{{ root_cause }}" alt="ML Feature Root Cause Impact Score Matrix">
+        </div>
+    </div>
+
+</body>
+</html>

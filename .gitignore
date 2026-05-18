@@ -1,0 +1,17 @@
+/.venv/
+__pycache__/
+.pytest_cache/
+/venv/
+*.lo*
+*.env
+/.idea/
+*.ini
+*.yml
+*.yaml
+.DS_Store
+src/.DS_Store
+tests/.DS_Store
+/catboost_info/
+/instance/
+src/exports/
+src/data/uploads/

@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Śauca.AI - Packaged Process & Adaptive Test Dashboard{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+    <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3 border-secondary">
+        <div>
+            <h2 class="text-white fw-bold m-0">
+                <i class="bi bi-box-seam-fill text-danger me-2"></i>Packaged Final Test Optimization
+            </h2>
+            <p class="text-secondary small mb-0">Stage 2: High-Dimensional SerDes Analysis, Assembly Corner Kitting, and Reliability Optimization</p>
+        </div>
+        <span class="badge bg-danger-subtle text-danger border border-danger px-3 py-2 rounded-pill">
+            <i class="bi bi-lightning-charge-fill me-1 small"></i> Closed-Loop Engines Active
+        </span>
+    </div>
+
+    <div class="row g-3 mb-4">
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card bg-dark text-white border-secondary h-100 shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-secondary text-uppercase small fw-bold mb-1">BIST Pass Yield</h6>
+                    <h2 class="display-6 fw-bold text-success m-0">{{ stats.bist_pass_rate }}%</h2>
+                    <div class="pt-2 text-secondary small border-top border-secondary mt-2">Built-in Self-Test Pass</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card bg-dark text-white border-secondary h-100 shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-secondary text-uppercase small fw-bold mb-1">Adaptive Test Time Saved</h6>
+                    <h2 class="display-6 fw-bold text-info m-0">{{ stats.test_time_saved_pct }}%</h2>
+                    <div class="pt-2 text-secondary small border-top border-secondary mt-2">Throughput Bypass Savings</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card bg-dark text-white border-secondary h-100 shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-secondary text-uppercase small fw-bold mb-1">Average Substrate Power</h6>
+                    <h2 class="display-6 fw-bold text-warning m-0">{{ stats.avg_power_w }} W</h2>
+                    <div class="pt-2 text-secondary small border-top border-secondary mt-2">Active Multi-domain Wattage</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card bg-dark text-white border-secondary h-100 shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-secondary text-uppercase small fw-bold mb-1">Total Units Packaged</h6>
+                    <h2 class="display-6 fw-bold text-white m-0">{{ stats.total_units }}</h2>
+                    <div class="pt-2 text-secondary small border-top border-secondary mt-2">Final Singulated Devices</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-12 col-lg-6">
+            <div class="card bg-dark text-white border-secondary h-100 shadow-sm">
+                <div class="card-header bg-transparent border-secondary py-3">
+                    <h5 class="card-title text-white m-0 small text-uppercase fw-bold text-info">
+                        <i class="bi bi-thermometer-high me-2"></i>Environmental Outlier Isolation
+                    </h5>
+                </div>
+                <div class="card-body text-center bg-black-25">
+                    <img src="data:image/png;base64,{{ env_plot }}" alt="Environmental Isolation Forest Outliers" class="img-fluid rounded border border-secondary shadow-sm">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="card bg-dark text-white border-secondary h-100 shadow-sm">
+                <div class="card-header bg-transparent border-secondary py-3">
+                    <h5 class="card-title text-white m-0 small text-uppercase fw-bold text-danger">
+                        <i class="bi bi-activity me-2"></i>SerDes Signal Integrity (Autoencoder)
+                    </h5>
+                </div>
+                <div class="card-body text-center bg-black-25">
+                    <img src="data:image/png;base64,{{ serdes_plot }}" alt="SerDes Neural Net Anomalies" class="img-fluid rounded border border-secondary shadow-sm">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="card bg-dark text-white border-secondary h-100 shadow-sm">
+                <div class="card-header bg-transparent border-secondary py-3">
+                    <h5 class="card-title text-white m-0 small text-uppercase fw-bold text-warning">
+                        <i class="bi bi-bezier2 me-2"></i>K-Means Corner Kitting Classification
+                    </h5>
+                </div>
+                <div class="card-body text-center bg-black-25">
+                    <img src="data:image/png;base64,{{ corner_plot }}" alt="Process Corner Classification" class="img-fluid rounded border border-secondary shadow-sm">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="card bg-dark text-white border-secondary h-100 shadow-sm">
+                <div class="card-header bg-transparent border-secondary py-3">
+                    <h5 class="card-title text-white m-0 small text-uppercase fw-bold text-secondary">
+                        <i class="bi bi-shield-check text-success me-2"></i>Soft Error Rate Reliability Projections
+                    </h5>
+                </div>
+                <div class="card-body text-center bg-black-25">
+                    <img src="data:image/png;base64,{{ reliability_plot }}" alt="Reliability Trendlines" class="img-fluid rounded border border-secondary shadow-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
